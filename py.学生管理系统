@@ -1,0 +1,179 @@
+import sys
+
+
+def studentDateInput(): # 学生信息录入功能
+    n = 0
+    f = open("D:\\作业\\date\\studentsdate.txt",'a')
+    studentNo = input("请输入学生学号：")
+    f1 = open("D:\\作业\\date\\studentsdate.txt", 'r')
+    findStudent = f1.readlines()
+    for line in findStudent:
+        if studentNo  in line:
+            print("库中存在学号相同，错误404")
+            n = n + 1
+    if n==0:
+            studentName = input("请输入学生姓名：")
+            studentMath = input("请输入学生数学成绩：")
+            studentEnglish = input("请输入学生英语成绩：")
+            studentChinese = input("请输入学生语文成绩：")
+            studentPolicy = input("请输入学生政治成绩：")
+            studentSum = int(studentEnglish) + int(studentMath) + int(studentPolicy) + int(studentChinese)
+            studentInto = studentNo + '\t' + studentName + '\t' + studentMath + '\t' + studentEnglish + '\t' + studentChinese + '\t' +studentPolicy + '\t' + str(studentSum) + '\n'
+            f.write(studentInto)
+            print("信息录入成功")
+
+    f.close()
+
+# code by bug制造者BooST
+def checkStudentDate(): # 学生查询功能
+    n,m = 0,0
+    f = open("D:\\作业\\date\\studentsdate.txt", 'r')
+    findStudent = f.readlines()
+    findOp = input("按学号查询，请输入 1 , 按姓名查询，请输入 2   请输入：")
+    if findOp == '1':
+        findNo = input("请输入所查询的学生学号:")
+        for line in findStudent:
+            if findNo in line:
+                print(" 学号 ", end='\t')
+                print("姓名", end='\t')
+                print("数学", end='\t')
+                print("英语", end='\t')
+                print("语文", end='\t')
+                print("政治", end='\t')
+                print("总成绩", end='\t')
+                print("\n")
+                print(line)
+                n = n + 1
+        if n == 0:
+            print("无该学生的数据！！！")
+
+    elif findOp == '2':
+        findName = input("请输入所查询的学生姓名：")
+        for line in findStudent:
+            if findName in line:
+                print(" 学号 ", end='\t')
+                print("姓名", end='\t')
+                print("数学", end='\t')
+                print("英语", end='\t')
+                print("语文", end='\t')
+                print("政治", end='\t')
+                print("总成绩", end='\t')
+                print("\n")
+                print(line)
+                m = m + 1
+        if m == 0:
+            print("无该学生的数据！！！")
+
+    else:
+        print("输入有误")
+
+    f.close()
+
+def delStudent():# 删除学生信息功能
+    n = 0
+    f1 = open("D:\\作业\\date\\studentsdate.txt", 'r')# f1 源文件
+    findStudent = f1.readlines()
+    f2 = open("D:\\作业\\date\\studentsdate.txt", 'w')# f2 修改后的文件
+    delNo = input("请输入要删除的学生号数：")
+    for line in findStudent:
+        if delNo in line:
+            continue
+        f2.write(line)
+        n = n + 1
+        if n == len(findStudent):
+            print("无该学生信息")
+        else:
+            print("学号{0}已经被删除".format(delNo))
+
+        f1.close()
+        f2.close()
+
+
+def modify(): # 修改
+    n = 0 # 用于遍历
+    mod_studentNo = input("请输入你要修改的学生的学号：")
+    f1 = open("D:\\作业\\date\\studentsdate.txt", 'r') # f1 源文件
+    line_modify = f1.readlines()
+    f2 = open("D:\\作业\\date\\studentsdate.txt", 'w') # f2 修改后的文件
+    for line in line_modify: # 遍历
+        if mod_studentNo in line:
+            print("查询成功")# code by bug制造者BooST
+            studentName = input("请输入学生姓名：")
+            studentMath = input("请输入学生数学成绩：")
+            studentEnglish = input("请输入学生英语成绩：")
+            studentChinese = input("请输入学生语文成绩：")
+            studentPolicy = input("请输入学生政治成绩：")
+            studentSum = int(studentEnglish) + int(studentMath) + int(studentPolicy) + int(studentChinese)
+            studentInto = mod_studentNo + '\t' + studentName + '\t' + studentMath + '\t' + studentEnglish + '\t' + studentChinese + '\t' + studentPolicy + '\t' + str(studentSum) + '\n'
+            f2.write(studentInto)
+            print("修改成功")
+            continue
+        f2.write(line) # w方式打开的文件，会覆盖原有的文件，故要把原来的数据再次写入
+        n = n + 1
+    if n == len(line_modify):
+        print("库中无该所查询的学生数据")
+    else:
+        print("学号为{0}的学生信息已经修改".format(mod_studentNo))
+
+    f1.close()
+    f2.close()
+def sumStudentsNumber(): # 统计学生总数
+    f1 = open("D:\\作业\\date\\studentsdate.txt", 'r')  # f1 源文件
+    line_modify = f1.readlines()
+    print("库中有{0}名学生的记录".format(len(line_modify)))
+    f1.close()
+# code by bug制造者BooST
+
+
+def checkEveryStudents(): # 显示所有学生的记录
+    print(" 学号 ",end='\t')
+    print("姓名", end='\t')
+    print("数学", end='\t')
+    print("英语", end='\t')
+    print("语文", end='\t')
+    print("政治", end='\t')
+    print("总成绩", end='\t')
+    print("\n")
+    f = open("D:\\作业\\date\\studentsdate.txt", 'r')
+    findStudent = f.readlines()
+    for line in findStudent:
+        print(line)
+    f.close()# code by bug制造者BooST
+
+def main():
+    y = 1
+    while y:
+        print("*" * 30)
+        print("     请选择功能：")
+        print("              1.录入学生信息")
+        print("              2.单体学生信息查询")
+        print("              3.删除学生信息")
+        print("              4.修改学生信息")
+        print("              5.统计学生总数")
+        print("              6.打印总体学生信息")
+        print("              7.退出程序")
+        print("*" * 30)
+        op = input("                请输入：")
+# code by bug制造者BooST
+        if op == '1':
+            studentDateInput()
+        elif op == '2':
+            checkStudentDate()
+        elif op == '3':
+            delStudent()
+        elif op == '4':
+             modify()
+        elif op == '5':
+             sumStudentsNumber()
+        elif op == '6':
+             checkEveryStudents()
+        elif op == '7':
+            print("欢迎您再次使用")
+            y = 0
+        else:
+             print("错误操作，被迫退出")
+             sys.exit()
+
+if __name__ == '__main__':
+    main()
+# code by bug制造者BooST
