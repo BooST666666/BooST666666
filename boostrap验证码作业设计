@@ -20,10 +20,15 @@
 	
 	<body>
 		<div style="margin-left:600px">
-		<input type="text" class="form-control" style="width: 300px"  placeholder="手机号/账号">
+		    <input type="text" class="form-control-inline" style="width: 300px;height: 45px"  placeholder=" 手机号/账号">
+		<br>
 		<br>
 		
-		<input type="password" class="form-control" style="width: 300px" placeholder="必须填写用户名">
+		
+		</div>
+		<div  style="margin-left:600px">
+		    <input type="password" class="form-control-inline" style="width: 300px;height: 45px" placeholder=" 必须填写密码">
+		    <button type="button" class="btn btn-link" title='暂无功能'>忘记密码？</button> 
 		<br>
 		
 		</div>
@@ -72,12 +77,12 @@
 		    } 
 		</style> 
 		</head>
-		 
+		 <br>
 		<body onload='createCode()'>
 			  
 			  
-		  <div style="margin-left:600px" >  <!--验证码模块-->
-		      <input type = "text" id = "input" title='验证码' placeholder="   请输入验证码 " />  
+		<div style="margin-left:600px" >  <!--验证码模块-->
+		      <input type = "text" id = "input" title='验证码' placeholder=" 请输入验证码 " style="width:200px;height: 40px" />  
 		      <input type="button" id="code" onclick="createCode()" style="width:60px" title='点击更换验证码' /> 
 			  <button type="button" class="btn btn-link" onclick="createCode()" title='刷新验证码'>看不清</button>  <!-- createCode()刷新验证码-->
 			  <br>
@@ -91,7 +96,7 @@
 		
 		<br>
 		<div class="alert alert-info">
-		<strong>code&&design</strong> by 黄晖豪20200320509
+		    <strong>code&&design</strong> by 黄晖豪20200320509
 		</div>
 		
 		
