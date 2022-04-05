@@ -1,0 +1,4 @@
+外网面板地址: http://175.178.54.210:8888/0c6d4ad8
+内网面板地址: http://10.0.20.13:8888/0c6d4ad8
+username: BooST66
+password: low666666
